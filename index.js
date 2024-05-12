@@ -5,7 +5,20 @@ const { closeDatabase } = require("./db/database");
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+const allowedOrigins = ['https://your-production-domain.com', 'http://localhost:4200'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  optionsSuccessStatus: 200  // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 
 app.use("/", require("./src/apps/users/url"));
 
