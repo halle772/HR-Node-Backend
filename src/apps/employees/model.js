@@ -5,7 +5,10 @@ const employeesSchema = new mongoose.Schema({
     employer: String,
     position: String,
     salary: Number,
-    deduction: Number,
+    deduction: [{
+        name: String, // Default 'name' if not provided
+        value: Number        // Default 'value' if not provided
+    }],
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
