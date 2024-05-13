@@ -2,7 +2,11 @@ const Employee = require("./model");
 
 
 const getEmployees = (req, res) => {
-  Employee.find({ user_id: req.user.userId }).then((employees) => {
+  let query = { user_id: req.user.userId };
+  if (req.query.name) {
+    query.name = { $regex: req.query.name, $options: 'i' }; // Case-insensitive regex search
+  }
+  Employee.find(query).then((employees) => {
     res.status(200).json(employees);
   }).catch((err) => {
     res.status(500).json({ error: err });
