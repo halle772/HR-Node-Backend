@@ -36,7 +36,7 @@ const deleteEmployee = (req, res) => {
 const updateEmployee = (req, res) => {
   const { id } = req.params;
   const { name, salary, employer, deduction, position } = req.body;
-  if (!name || !salary || !employer || !deduction || !position) {
+  if (!name || !salary || !employer || !position) {
     return res.status(400).json({ error: "Invalid input" });
   }
   Employee.findOneAndUpdate({ _id: id, user_id: req.user.userId }, { name, salary, employer, deduction, position }).then(() => {

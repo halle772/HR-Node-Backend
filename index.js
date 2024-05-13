@@ -31,3 +31,4 @@ app.listen(PORT, () => {
 
 
 process.on("exit", closeDatabase);
+module.exports = app;
