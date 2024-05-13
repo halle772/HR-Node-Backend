@@ -5,7 +5,7 @@ const { closeDatabase } = require("../db/database");
 
 const app = express();
 app.use(express.json());
-const allowedOrigins = ['https://your-production-domain.com', 'http://localhost:4200'];
+const allowedOrigins = ['https://hr-com.vercel.app', 'http://localhost:4200'];
 
 const corsOptions = {
   origin: function (origin, callback) {
