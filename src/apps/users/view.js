@@ -1,5 +1,4 @@
 const bycrypt = require("bcryptjs");
-const { db, _ } = require("../../../db/database");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
 const User = require("./model");

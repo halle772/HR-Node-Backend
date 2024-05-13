@@ -1,4 +1,3 @@
-const { db, _ } = require("../../../db/database");
 const Employee = require("./model");
 
 
