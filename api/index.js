@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const authMiddleware = require("./src/utils/middleware/authMiddleware");
-const { closeDatabase } = require("./db/database");
+const authMiddleware = require("../src/utils/middleware/authMiddleware");
+const { closeDatabase } = require("../db/database");
 
 const app = express();
 app.use(express.json());
@@ -20,9 +20,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use("/", require("./src/apps/users/url"));
+app.use("/", require("../src/apps/users/url"));
 
-app.use("/employees", authMiddleware, require("./src/apps/employees/url"));
+app.use("/employees", authMiddleware, require("../src/apps/employees/url"));
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
